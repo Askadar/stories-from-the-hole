@@ -1,0 +1,12 @@
+---
+import MDPostLayout from '@/layouts/MDPostLayout.astro'
+
+const { entry } = Astro.props
+const { Content } = await entry.render()
+
+export { getStaticPaths } from './getPaths'
+---
+
+<MDPostLayout title={entry.data.title}>
+	<Content />
+</MDPostLayout>

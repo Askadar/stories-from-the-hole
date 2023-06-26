@@ -5,6 +5,7 @@ export interface Props {
 }
 
 const { title } = Astro.props
+
 ---
 
 <!DOCTYPE html>
@@ -20,6 +21,10 @@ const { title } = Astro.props
 	<body class="bg-black text-white flex justify-center">
 		<div class="w-[48rem]">
 			<Navigation />
+
+			<!-- <h1>{frontmatter.title}</h1>
+			<p>Published on: {frontmatter.pubDate.slice(0, 10)}</p>
+			<p>Written by {frontmatter.author}</p> -->
 			<slot />
 		</div>
 	</body>
