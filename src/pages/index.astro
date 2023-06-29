@@ -1,7 +1,47 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro'
+
+import { getPosts, getFeatured } from './posts/getPaths'
+import { PostItem } from '@/components'
+const pages = await getPosts()
+const featured = getFeatured(pages)
 ---
 
-<Layout title="Welcome to Astro.">
-Nut?
+<Layout title="Blog suck">
+	<main>
+		<h1>My Astro Learning Blog</h1>
+		<div class="flex gap-2">
+			<p>Lorem filler text cause I can't be arsed.</p>
+		</div>
+
+		{
+			featured.length > 0 && (
+				<>
+					<h2 class="text-accent-500 leading-9 font-normal text-2xl">
+						I wanna believe this stuff is good (it’s not, none of this is)
+					</h2>
+					<ul>
+						{featured.map((p) => (
+							<li>
+								<PostItem {...p.props.entry.data} href={`/posts/${p.params.slug}`} />
+							</li>
+						))}
+					</ul>
+				</>
+			)
+		}
+
+		<h2 class="text-accent-500 leading-9 font-normal text-2xl">
+			Fresh things right out of the HOLE
+		</h2>
+		<ul>
+			{
+				pages.map((p) => (
+					<li>
+						<PostItem {...p.props.entry.data} href={`/posts/${p.params.slug}`} />
+					</li>
+				))
+			}
+		</ul>
+	</main>
 </Layout>

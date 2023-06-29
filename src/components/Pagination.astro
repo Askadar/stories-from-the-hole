@@ -1,0 +1,14 @@
+---
+import type { Page } from 'astro'
+export interface Props {
+	page: Page<unknown>
+}
+
+const { page } = Astro.props
+---
+
+<div class="flex gap-2">
+	<a href={page.url.prev}>Prev</a>
+	<span>{page.currentPage} / {Math.round(page.total / page.size)}</span>
+	<a href={page.url.next}>Next</a>
+</div>

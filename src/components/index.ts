@@ -1,2 +1,5 @@
 export { default as Navigation } from './Navigation.astro'
 export { default as Link } from './Link.astro'
+export { default as Tag } from './Tag.astro'
+export { default as PostItem } from './PostItem.astro'
+export { default as Pagination } from './Pagination.astro'

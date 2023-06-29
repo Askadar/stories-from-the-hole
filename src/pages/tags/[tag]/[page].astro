@@ -1,0 +1,27 @@
+---
+import { Pagination, PostItem } from '@/components'
+import { getTags } from '../../posts/getPaths'
+import type { Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import { Layout } from '@/layouts'
+
+interface Props {
+	page: Page<CollectionEntry<'posts'>>
+}
+export const getStaticPaths = getTags
+
+const { tag } = Astro.params
+const { page } = Astro.props
+---
+
+<Layout title={`Posts tagged with ${tag}`}>
+	<div>
+		<h2>
+			{tag}
+		</h2>
+		<div class="flex">
+			{page.data.map((post) => <PostItem href={`/posts/${post.slug}`} {...post.data} />)}
+		</div>
+		<Pagination page={page} />
+	</div>
+</Layout>

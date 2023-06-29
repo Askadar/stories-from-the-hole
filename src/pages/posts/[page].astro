@@ -1,0 +1,32 @@
+---
+import { Layout } from '@/layouts'
+import { Pagination, PostItem } from '@/components'
+import type { GetStaticPaths, Page } from 'astro'
+import { SluggedPost, getPosts } from './getPaths'
+
+interface Props {
+	page: Page<SluggedPost>
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+	const posts = await getPosts()
+	return paginate(posts, { pageSize: 2 })
+}
+const { page } = Astro.props
+---
+
+<Layout title="Posts Archive">
+	<h2 class="text-accent-500 leading-9 font-normal text-2xl">
+		Fresh things right out of the HOLE @ {page.currentPage}
+	</h2>
+	<ul>
+		{
+			page.data.map((p) => (
+				<li>
+					<PostItem {...p.props.entry.data} href={`/posts/${p.params.slug}`} />
+				</li>
+			))
+		}
+	</ul>
+	<Pagination page={page} />
+</Layout>

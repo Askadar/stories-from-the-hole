@@ -1,6 +1,7 @@
 ---
 title: "Nut blog"
-pubDate: 2022-07-01
+date: 2022-07-01
+time: "7pm"
 description: "This is the first post of my new Astro blog."
 author: "Astro Learner"
 image:

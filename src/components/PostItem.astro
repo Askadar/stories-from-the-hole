@@ -1,0 +1,22 @@
+---
+import { url } from '@/util'
+import { Tag } from './'
+
+export interface Props {
+	title: string
+	date: Date
+	time: string
+	tags: string[]
+	href: string
+}
+
+const { title, date, time, tags, href } = Astro.props
+---
+
+<div>
+	<p><a href={url(href)}>{title}</a></p>
+	<div class="flex wrap gap-2 text-secondary-100">
+		<span>{date.toDateString()}</span><span>{time}</span><span>|</span>
+		{tags.map((tag) => <Tag label={tag} />)}
+	</div>
+</div>
