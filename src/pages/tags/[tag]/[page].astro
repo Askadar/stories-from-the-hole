@@ -15,13 +15,11 @@ const { page } = Astro.props
 ---
 
 <Layout title={`Posts tagged with ${tag}`}>
-	<div>
-		<h2>
-			{tag}
-		</h2>
-		<div class="flex">
-			{page.data.map((post) => <PostItem href={`/posts/${post.slug}`} {...post.data} />)}
-		</div>
-		<Pagination page={page} />
+	<h2>
+		{tag}
+	</h2>
+	<div class="flex">
+		{page.data.map((post) => <PostItem href={`/posts/${post.slug}`} {...post.data} />)}
 	</div>
+	<Pagination page={page} />
 </Layout>

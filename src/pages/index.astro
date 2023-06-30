@@ -8,29 +8,31 @@ const featured = getFeatured(pages)
 ---
 
 <Layout title="Blog suck">
-	<main>
+	<div class="flex flex-col gap-3">
 		<h1>My Astro Learning Blog</h1>
 		<div class="flex gap-2">
 			<p>Lorem filler text cause I can't be arsed.</p>
 		</div>
+	</div>
 
-		{
-			featured.length > 0 && (
-				<>
-					<h2 class="text-accent-500 leading-9 font-normal text-2xl">
-						I wanna believe this stuff is good (it’s not, none of this is)
-					</h2>
-					<ul>
-						{featured.map((p) => (
-							<li>
-								<PostItem {...p.props.entry.data} href={`/posts/${p.params.slug}`} />
-							</li>
-						))}
-					</ul>
-				</>
-			)
-		}
+	{
+		featured.length > 0 && (
+			<div class="flex flex-col gap-3">
+				<h2 class="text-accent-500 leading-9 font-normal text-2xl">
+					I wanna believe this stuff is good (it’s not, none of this is)
+				</h2>
+				<ul>
+					{featured.map((p) => (
+						<li>
+							<PostItem {...p.props.entry.data} href={`/posts/${p.params.slug}`} />
+						</li>
+					))}
+				</ul>
+			</div>
+		)
+	}
 
+	<div class="flex flex-col gap-3">
 		<h2 class="text-accent-500 leading-9 font-normal text-2xl">
 			Fresh things right out of the HOLE
 		</h2>
@@ -43,5 +45,5 @@ const featured = getFeatured(pages)
 				))
 			}
 		</ul>
-	</main>
+	</div>
 </Layout>
